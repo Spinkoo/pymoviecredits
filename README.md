@@ -3,6 +3,15 @@ Generate movie-credits style videos in python
 For those like me tired of movie-credits-video-generators with watermarks, enjoy this.
 
 a python script to generate homemade credits videos using OpenCV.
+
+![example](example.png)
+## Requirements
+
+- Python
+- OpenCV
+- Pandas
+- Numpy
+
 ## Usage
 
 ```
