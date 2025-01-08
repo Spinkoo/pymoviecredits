@@ -1,5 +1,9 @@
 import cv2
 import numpy as np
+from data_reader import read_credits_static, read_credits_from_excel, read_credits_from_csv
+
+CREDIT_TYPE = "excel"
+
 
 def create_credits_video(credits_dict, output_file, video_size=(720, 1280), fps=30, duration_per_line=1, bg_color=(0, 0, 0), text_color=(255, 255, 255), font=cv2.FONT_HERSHEY_SIMPLEX, font_scale=1, thickness=2):
     """
@@ -51,32 +55,25 @@ def create_credits_video(credits_dict, output_file, video_size=(720, 1280), fps=
     out.release()
     print(f"Video saved as {output_file}")
 
-# Example usage
-credits = {
-    "Directors": "",
-    "Producer": "P",
-    "First Assistant Director": "Tyrion Lannister",
-    "Second Assistant Director": "Chatgpt..",
-    "CAST": "",
-    "The Bar": "Y",
-    "The legs by the start of the video": "Stephen Hawking's",
-    "CAMERA":"",
-    "Camera Operator":"Bottle of water supporting the phone?",
-    "HAIR":"",
-    "Hair Department Head":"Neighbourhood barber",
-    "DIRECTOR THANKS":"",
-    "The Director Wishes to Thank":"Git community",
-}
-
-create_credits_video(
-    credits_dict=credits,
-    output_file="credits.mp4",
-    video_size=(1080, 1280),
-    fps=100,
-    duration_per_line=2,
-    bg_color=(0, 0, 0),
-    text_color=(255, 255, 255),
-    font=cv2.FONT_HERSHEY_COMPLEX,
-    font_scale=1,
-    thickness=2
-)
+if __name__ == "__main__":
+    
+    if CREDIT_TYPE == "static":
+        credits = read_credits_static()
+    elif CREDIT_TYPE == "excel":
+        credits = read_credits_from_excel("credits.xlsx")
+    elif CREDIT_TYPE == "csv":
+        credits = read_credits_from_csv("credits.csv")
+    else:
+        raise ValueError(f"Invalid credit type: {CREDIT_TYPE}")
+    create_credits_video(
+        credits_dict=credits,
+        output_file="credits.mp4",
+        video_size=(1080, 1280),
+        fps=100,
+        duration_per_line=2,
+        bg_color=(0, 0, 0),
+        text_color=(255, 255, 255),
+        font=cv2.FONT_HERSHEY_COMPLEX,
+        font_scale=1,
+        thickness=2
+    )
