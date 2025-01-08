@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from data_reader import read_credits_static, read_credits_from_excel, read_credits_from_csv
 
-CREDIT_TYPE = "excel"
+CREDIT_TYPE = "static"
 
 
 def create_credits_video(credits_dict, output_file, video_size=(720, 1280), fps=30, duration_per_line=1, bg_color=(0, 0, 0), text_color=(255, 255, 255), font=cv2.FONT_HERSHEY_SIMPLEX, font_scale=1, thickness=2):

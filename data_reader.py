@@ -47,12 +47,12 @@ def read_credits_static():
     # Example usage
     return {
         "Directors": "",
-        "Producer": "P",
+        "Producer": "Spinkoo",
         "First Assistant Director": "Tyrion Lannister",
         "Second Assistant Director": "Chatgpt..",
         "CAST": "",
         "The Bar": "Y",
-        "The legs by the start of the video": "Stephen Hawking's",
+        "The legs by the start of the video": "Stephen H's",
         "CAMERA":"",
         "Camera Operator":"Bottle of water",
         "HAIR":"",
